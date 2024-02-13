@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="btn_01">버튼</button><br>
+    <script>
+        //Number :숫자
+        document.write(typeof 10 +"<br>"); // typeof 문자열 타입을 보여준다
+        document.write(typeof 10.7+"<br>");
+        //String :문자열
+        document.write(typeof"helloWolrd"+"<br>");
+
+
+        //Object :{key:value}형식으로 만들어진 타입
+        document.write(typeof {name:"홍길동",age:"50"}+"<br>");
+        const btn_01_el=document.querySelector('#btn_01');
+        document.write(typeof btn_01_el+"<br>");
+        // console.log(btn_01_el);
+        // alert(btn_01_el);
+
+        //Boolean: true/false 
+        document.write(typeof true+"<br>");
+        document.write(typeof false+"<br>");
+
+        //Null
+        let val=null; //define-null로 초기화
+        document.write(val+"<br>");
+        //undifiend
+        let val2; //Undefine--값이 지정x ->공간형성x
+        document.write(val2+"<br>");
+        
+
+    </script>
+</body>
+</html>
