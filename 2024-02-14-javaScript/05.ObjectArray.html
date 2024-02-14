@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //배열관련 함수(메서드)
+        let arr=['a','b',null,true,30,50.5,{name:'홍길동',age:55}];
+ 
+        console.log(typeof arr);
+        console.log(arr[0]);
+        console.log(arr[1]);
+        console.log(arr[2]);
+        console.log(arr[3]);
+        console.log(arr[4]);
+        console.log(arr[5]);
+        console.log(arr[6]);
+       
+        //JS 배열은 동적확장이 가능하다
+        console.log("Size:"+arr.length);
+        arr[7]=202;
+        arr[8]={owner:'이동환',model:'지바겐'};
+        console.log("Size:"+arr.length);
+
+        //요소탐색(반복문)
+        for (i=0;i<arr.length;i++) {
+           console.log(arr[i]);
+        }
+
+        for(i in arr){
+            console.log(arr[i]);
+        }
+        // -------------
+        // 배열관련 메서드 push() -끝에 요소추가
+        // ---------------
+        console.log(arr.length);
+        arr.push(1234);
+        for(i in arr){
+            console.log(arr[i]);
+        }
+        console.log(arr.length); //10
+        //----------------
+        //배열관련 메서드 pop() --마지막요소를뺀다
+        // ----------------
+        console.log(arr.length);
+        arr.pop();
+        console.log(arr.length);
+
+        //--------------
+        // 배열관련 메서드 FOREACH  -요소들이 하나씩 꺼내와진다.
+        // ---------
+        // arr.forEach((요소)=>{처리되는 로직});
+        arr.forEach((item)=>{console.log(item)});
+
+        //--------------
+        // 배열관련 메서드 Sort  -요소들 정리
+        // ---------
+        let arr2=["홍길동","남길동","서길동"];
+        let arr3=[10,2,44,3,5,77,"1",22];
+        arr2.sort(); //기본 sort함수는 요소를 문자열로변환이후 사전편찬순서대로 오름차순 정렬
+        arr2.forEach((a)=>{console.log(a)});
+
+        arr3.sort((a,b)=>{ 
+            // return a-b; // 숫자 오름차순
+            return b-a; //숫자 내림차순졍렬
+        });
+        arr3.forEach((item)=>{console.log(item)});
+        console.log('------------');
+        
+        // -------------
+        // 배열관련 메서드 FILTER
+        // -------------
+        // 조건식을 만족하는 요소만 필터링해서 따로 배열에 저장
+        let arr4=[10,51.2,'t1','t2',true,false,1,99,100,null,{name:'티모',age:555},'faker'];
+        // arr4.filter((요소=>{return 조건식}))
+        // arr4.filter(요소=>return 조건식)
+
+        let filterdARR=arr4.filter(item=> typeof item=='number');
+        filterdARR.forEach((item)=>{console.log(item)});
+
+        console.log('-------------');
+        let filterArr2=arr4.filter(item=>typeof item=='object');
+        filterArr2.forEach((item)=>{console.log(item)});
+        console.log('-------------');
+        let FA=arr4.filter(item=>typeof item=='number')
+            .sort((a,b)=>{ // 뽑아놓은곳에서 오름차순정렬
+                return a-b
+               
+            });
+        FA.forEach((item)=>{console.log(item)});
+        console.log('-------------');
+
+        // ---------------------
+        // 배열관련 메서드 REDUCE
+        // reduce((누산변수,요소변수)=>{return 연산로직},누산변수초기값)
+        // --------------
+        let returnVal=arr4.filter(item=>typeof item=='number')
+            .reduce((sum,item)=>{return sum+item},0)
+            //sum= 값을 누적하기위해 만든 변수
+        console.log("Rv :",returnVal);  //arr4 배열의 number 값들의 합
+        console.log('-------------');
+
+        // -------------
+        //배열 객체 반복하기[{},{},{},{}];
+        // -----------
+        let arr6=[
+            {name:"티모",age:"555",location:"탑"},
+            {name:"아무무",age:"777",location:"정글"},
+            {name:"스몰도",age:"5155",location:"원딜"},
+            {name:"르블랑",age:"55",location:"미드"}
+        ]
+
+        arr6.forEach((item)=>{ //name,location만 출력
+            // console.log(item)
+            for(key in item){
+                //console.log(key);
+                if(key=='name'|| key=='location')
+                console.log(item[key]);
+            }
+            console.log("======")
+        });
+        console.log('------------')
+        //---------
+        // 배열관련 메서드 MAP(): 함수의 반환값으로 새로운 배열을 생성
+        //filter vs map
+        // filter :조건식의 true/flase 배열
+        // map:여러 산술된 인자를 받아 배열을 만든다(조건식도 포함)
+        // --------------
+        let arr7=[10,20,30,40,50,60];
+        let RT=arr7.map((item)=>{return item+'%';});
+        RT.forEach((item)=>{console.log(item)});
+
+        console.log('--------------')
+        let arr8=[
+            {name:"티모",age:"555",location:"탑"},
+            {name:"아무무",age:"777",location:"정글"},
+            {name:"스몰도",age:"5155",location:"원딜"},
+            {name:"르블랑",age:"55",location:"미드"}
+        ]
+        let RT02=arr8.map((item)=>{
+            return {name:item.name,location:item.location}
+        });
+        RT02.forEach((item)=>{console.log(item)});
+        console.log('------------');
+
+        // -------------
+        // 유사배열 객체 -{}.foreach (x)
+        //              -{}.map,reduce(x)
+        // -----------
+        const sim_arr={
+            0:'aaa',
+            1:'bbb',
+            2:'ccc',
+            3:'ddd',
+            length:4
+        }
+        console.log(sim_arr.length);
+        console.log(sim_arr[0]); console.log(sim_arr[3]);
+        // sim_arr.foreach((item)=>{console.item});
+        Array.from(sim_arr).foreach((item)=>{console.log(item)});
+        
+    </script>
+
+    <!-- ForEach((item)=>{logic}) -->
+    <!-- filter((item)=>{return 조건식}) -->
+    <!-- map((item)=>{로직}) -->
+    <!-- reduce((누산변수,item)=>{로직},누산변수초기값) -->
+
+    
+</body>
+</html>
