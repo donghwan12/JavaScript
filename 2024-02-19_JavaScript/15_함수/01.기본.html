@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //함수의 4가지 형태(ecma6 이전)
+  
+
+        //함수의 4가지 형태(ECMA6 이전)(기본 Hosting x)
+        // function f1(n1,n2){console.log('f1(n1,n2)');return n1+n2}
+        // function f2(n1,n2){console.log('f2(n1,n2):'); console.log(n1+n2)}
+        // function f3(){console.log('f3() ');return 11+21}
+        // function f4(){console.log('f4() ',10,20);}
+
+        //함수의 4가지형태(eCMA6 이후)(화살표함수 -기본Hosting x)
+        //[function name(){}] == [const name=()=>{}]
+        // const f1=(n1,n2)=>{console.log('f1(n1,n2)');return n1+n2}
+        // const f2=(n1,n2)=>{console.log('f2(n1,n2):'); console.log(n1+n2)}
+        // const f3=()=>{console.log('f3() ');return 11+21}
+        // const f4=()=>{console.log('f4() ',10,20);}
+
+
+        // //f1
+        // console.log('Before call');
+        // const val1=f1(10,20); //기본적으로 함수는 호출했던 위치로 돌아온다.
+        // console.log("val1 :" ,val1);
+        // console.log('after call')
+        // console.log('================')
+        // //f2
+        // console.log('Before call');
+        // const val2=f2(10,20); //기본적으로 함수는 호출했던 위치로 돌아온다.
+        // console.log("val2 :" ,val2); //retrun 값이 없기 때문에 undefined라고 뜬다.
+        // console.log('after call')
+        // console.log("===============")
+        // //f3
+        // console.log('Before call');
+        // const val3=f3(); //
+        // console.log("val3 :" ,val3);
+        // console.log('after call')
+        // console.log('================')
+        //  //f4
+        //  console.log('Before call');
+        // const val4=f4(); //
+        // console.log("val3 :" ,val4);
+        // console.log('after call')
+        // console.log('================')
+
+        //함수의 리턴형태(Object)
+        // Object{} 의 멤버로 지정되는 함수는 function(){} 형태로만 사용가능 ()=>{} x
+        // function f5(){
+        //     return{
+        //         name:"홍길동",
+        //         age:'22',
+        //         getName:function(){
+        //             return `${this.name}`;
+        //         },
+        //         getAge:function(){
+        //             return  `${this.age}`;
+        //         }
+        //     };
+        // }
+        // console.log(f5());
+        // const obj=f5();
+        // console.log(obj);
+        // console.log(obj.getName());
+        // console.log(obj.getAge());
+
+        //가변인자 (...args) 사용
+        function f6(...args){
+            console.log(args);
+            args.forEach((item)=>{console.log(item)})
+        }
+        f6(10,20,30,40,50,60,true,null,undefined,{name:"홍길동",age:"25"});
+    </script>
+</body>
+</html>
