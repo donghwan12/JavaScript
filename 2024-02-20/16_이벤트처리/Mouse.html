@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;height: 100px;
+            border: 1px solid;
+            margin: 50px;
+        }
+        #d3{
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1"></div><br>
+    <a href="javascript:void(0)" id="a1">TEST1</a><br>
+    <button id="btn1" onclick="alert('btn cliekd inline attr...')">test2</button>
+    
+    <form  name="frm" action="test.jsp" onsubmit="return false">
+        <input type="text" name="username"><br>
+        <input type="text" name="password"><br>
+        <input type="text" name="email"><br>
+        <!-- <input type="submit" value="BTN01"/> -->
+        <button>이메일인증</button>
+        <a id="submit_btn" href="javascript:void(0)">버튼</a>
+        <input type="submit" value="BTN01">
+        <input type="button" value="BTN02">
+    </form>
+    <hr>
+    <div id="d2"></div>
+    <hr>
+    <div id="d3"></div>
+    <script>
+        // Click Event
+       const d1tg =document.getElementById('d1');
+       let d1Cnt=0;
+        d1tg.addEventListener('click',function (){
+            d1tg.innerHTML=`<h4>Cliked...${++d1Cnt}</h4>`;
+        });
+        const a1tg =document.getElementById('a1');
+        a1tg.addEventListener('clicked',function(){
+            alert("ATAG CLIKED....");
+        });
+        const btn1tg=document.getElementById('btn1');
+        btn1tg.addEventListener('click',function(){alert("btn cliked...")})
+
+         const submitBtnEl = document.getElementById('submit_btn');
+         submitBtnEl.addEventListener('click',function(){
+            const from =document.frm;
+            //유효성체크
+            alert(form.username.value);
+            alert(form.password.value);
+            alert(form.email.value);
+            //전송
+            form.submit();
+         })
+
+         //mouseover/mouseleave
+         const d2tg =document.getElementById('d2');
+         d2tg.innerHTML='INIT';
+         d2tg.addEventListener('click',function(){
+            d2tg.innerHTML='CLICKED...'
+         })
+         d2tg.addEventListener('mouseover',function(){
+            d2tg.innerHTML='OVER...'
+         })
+         d2tg.addEventListener('mouseleave',function(){
+            d2tg.innerHTML='LEAVE....'
+         })
+
+         // dragover dragstart,drageend,drop
+         const d3tg=document.getElementById('d3');
+         d3tg.addEventListener('dragover',function(event){
+            console.log("dragover!!");
+            event.preventDefault();
+         })
+         d3tg.addEventListener('drop',function(event){
+            console.log('drop...!',event);
+            console.log('drop...!',event.dataTransfer.files);
+            const files=event.dataTransfer.files
+            for(i=0;i<files.length; i++){
+                // console.log(files[i]);
+                if(files[i].type.startsWith("image/")){
+                    console.log(files[i]);
+                    const imagtg=document.createElement("img"); //생성
+                    imagtg.src=URL.createObjectURL(files[i]); //src경로 설정
+                    imagtg.setAttribute("style","width200px;height:200px");
+                    d3tg.appendChild(imagtg); //d3tg연결
+                }
+            }
+            event.preventDefault();
+            
+         })
+
+        
+
+    </script>
+</body>
+</html>
