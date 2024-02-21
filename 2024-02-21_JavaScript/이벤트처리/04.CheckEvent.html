@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    <input type="checkbox" id="chk"/>
+    <label>체크박스</label>
+    </div>
+
+    <script>
+        const chke1=document.getElementById('chk');
+        chke1.addEventListener('change',function(event){
+            console.log('change',event);
+            if(event.target.checked){
+                console.log('checked..')
+            }else{
+                console.log('unCehcked..')
+            }
+        })
+    </script>
+</body>
+</html>
