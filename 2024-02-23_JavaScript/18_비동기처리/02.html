@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .boxs{
+            display: flex;
+            justify-content: center;
+        }
+        .box{width: 300px;height: 80vh;overflow: auto;border: 1px solid ;margin: 10px;}
+        .box2{width: 300px;height: 80vh;overflow: auto;border: 1px solid ;margin: 10px;}
+    </style>
+</head>
+<body>
+
+    <button onclick="start()">시작</button>  | <button onclick="stop()">정지</button> | <button onclick="alert('!!!')">alert</button>
+    <button onclick="start2()">시작2</button> | <button onclick="stop2()">정지2</button>
+    <hr>
+    <div class="boxs">
+        <div class="box"></div>
+        <div class="box2"></div>
+    </div>
+    <script>
+        //setInterval(()=>{},millisecond) :주기마다 처리
+        // cleareInterval(id) :setInterval 해제
+
+        let id;
+        let id2;
+        const boxe1=document.querySelector('.box');
+        const boxe2=document.querySelector('.box2');
+        function start(){
+           id =setInterval(()=>{
+            boxe1.innerHTML+='BATCH PROCESS...<br>'
+           },1000)
+        }
+        function stop(){
+            clearInterval(id);
+            boxe1.innerHTML+='BATCH STOP...<br>'
+        }
+        function start2(){
+           id2 =setInterval(()=>{
+            boxe2.innerHTML+='BATCH PROCESS...<br>'
+           },1000)
+        }
+        function stop2(){
+            clearInterval(id2);
+            boxe2.innerHTML+='BATCH STOP...<br>'
+        }
+
+    </script>
+</body>
+</html>
