@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="경찰청112.js"></script>
+
+</head>
+<body>
+    
+    <div style="width:500px;height:500px;border:1px solid;padding:15px;margin:10px auto;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        console.log(신고현황);
+      
+        const arr=신고현황.map((item)=>{
+            const {구분,...rest}=item;
+            return {구분,rest};
+        })
+        .reduce((acc,item)=>{
+            // console.log(item);
+            var values=Object.values(item.rest);
+            let sum=0;
+            values.map(num=>sum+=num);
+            // console.log("sum:"+sum)
+
+            if(acc.hasOwnProperty(item.구분)){
+            acc[item.구분]+=sum;
+            }else{
+            acc[item.구분]=sum;
+            }
+        },{})
+        // console.log(keys)
+        
+        console.log(arr);
+    </script>
+</body>
+</html>
